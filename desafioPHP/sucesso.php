@@ -4,26 +4,6 @@
     include_once("config/variaveis.php");
     include_once("config/validacoes.php");
 
-    $arquivo = $_FILES["imagem"];
-    if($_FILES){
-
-    $nomeArquivo = $arquivo["name"];
-    $tmpLocal = $arquivo["tmp_name"];
-    $direccion = "uploads";
-    $caminhoCompleto = $direccion."/".$nomeArquivo;
-
-    if (!file_exists($direccion.$nomeArquivo)) {
-        $deuCerto = move_uploaded_file($tmpLocal, $caminhoCompleto);
-        if ($deuCerto){
-            echo "Seu arquivo foi salvo.";
-        } else {
-            echo "Não foi possível salvar o arquivo.";
-        }
-    } else {
-        echo "Já existe um arquivo com esse nome. Favor enviar outro arquivo.";
-    }
-}
-
 $nomeArquivo = "produto.json";
 
     function cadastrarProduto($nome, $categoria, $descricao, $quantidade, $preco, $img) {
@@ -35,14 +15,15 @@ $nomeArquivo = "produto.json";
         $produtos = json_decode(file_get_contents($nomeArquivo), true);
     }
     
-
+    $idProduto = count($produtos) +1;
     $nomeImagen = $img['name'];
     $tempName = $img['tmp_name'];
     $direccion = "img";
     $endImagem = $direccion."/".$nomeImagen;
 
 
-    $produtos[] = ["nome" => $nome,
+    $produtos[] = ["id"=>$idProduto,
+                    "nome" => $nome,
                     "categoria" => $categoria,
                     "descricao" => $descricao,
                     "quantidade" => $quantidade,
@@ -54,7 +35,7 @@ $nomeArquivo = "produto.json";
     $deuCerto = file_put_contents($nomeArquivo, $json);
 
     if ($deuCerto) {
-        if (move_uploaded_file($tmpLocal, $caminhoCompleto)) {
+        if (move_uploaded_file($tempName, $endImagem)) {
             return "Salvo com sucesso";
         } else {
                 return "Nao foi possivel salvar a imagem.";
@@ -83,32 +64,36 @@ $dadosProduto = json_decode(file_get_contents($nomeArquivo), true);
 <body>
     <main>
         <section class="container bg-light p-5">
-            <button href="desafio.php">&#8592 Voltar para lista de produtos</button>
+             <a href="desafioPHP.php"><button>&#8592 Voltar para lista de produtos</button></a>
                 <div class="row">
-                <?php for($i=0; $i < count($dadosProduto); $i++) { 
-                    if($i == count($dadosProduto) - 1) { 
-                    <div class="col-5">echo ".$dadosProduto[$i]['imagem']."; 
+                <?php if(isset($dadosProduto) && $dadosProduto !=[]) { ?>
+                    <?php foreach($dadosProduto as $produto) { 
+                        if ($_GET['id']== $produto['id']) { 
+                        ?>
+                    <div class="col-5 img-carrito"> 
+                        <img src="<?php echo $produto['imagem']?>" alt="" width="95%"> 
                     </div>
                     <div class="col-7">
-                    <h1>".$dadosProduto[$i]['nome']"</h1>
-                    <p class="lead">".$dadosProduto[$i]['categoria']"</p>
-                    <p>Camiseta</p>
-                    <p class="lead">".$dadosProduto[$i]['descricao']"</p>
-                    <p>Camiseta</p>
+                    <h1><strong><?php echo $produto['nome']?></strong></h1>
+                    <h2>Categoria</h2>
+                    <p class="lead"><strong><?php echo $produto['categoria']?></strong></p>
+                    <p><strong>Descricao do produto</strong></p>
+                    <p class="lead"><?php echo $produto['descricao']?></p>
                     <div class="d-flex justify-content-between">
-                        <div>
-                        <p class="lead">Quantidade em estoque</p>
-                        <p>Camiseta</p>
-                        </div>
+                        <p class="lead"><strong>Quantidade em estoque</strong></p>
+                        <p class="lead"><?php echo $produto['quantidade'] ?></p>
+                        <p><strong>Preco do produto. R$:</strong></p>
                         <div class="pr-5"> 
-                        <p class="lead">".$dadosProduto[$i]['preco]</p>
-                        <p>Camiseta</p>    
+                        <p class="lead"><?php echo $produto['preco']?></p>   
                         </div>
                     </div>
                 </div>
+                <?php  } ?>
+                    <?php } ?>
+                    </div>
+                <?php } ?>
         </section>
-            }
-        } ?>
+        <br>
     </main>
 </body>
 </html>

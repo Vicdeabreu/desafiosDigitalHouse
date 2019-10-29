@@ -2,26 +2,6 @@
     include_once("config/variaveis.php");
     include_once("config/validacoes.php");
 
-    $arquivo = $_FILES["imagem"];
-    if($_FILES){
-
-    $nomeArquivo = $arquivo["name"];
-    $tmpLocal = $arquivo["tmp_name"];
-    $direccion = "uploads";
-    $caminhoCompleto = $direccion."/".$nomeArquivo;
-
-    if (!file_exists($direccion.$nomeArquivo)) {
-        $deuCerto = move_uploaded_file($tmpLocal, $caminhoCompleto);
-        if ($deuCerto){
-            echo "Seu arquivo foi salvo.";
-        } else {
-            echo "Não foi possível salvar o arquivo.";
-        }
-    } else {
-        echo "Já existe um arquivo com esse nome. Favor enviar outro arquivo.";
-    }
-}
-
 $nomeArquivo = "produto.json";
 
     function cadastrarProduto($nome, $categoria, $descricao, $quantidade, $preco, $img) {
@@ -33,14 +13,15 @@ $nomeArquivo = "produto.json";
         $produtos = json_decode(file_get_contents($nomeArquivo), true);
     }
     
-
-    $nomeImagen = $img['name'];
-    $tempName = $img['tmp_name'];
+    $idProduto = count($produtos) +1;
+    $nomeImagen = $_FILES['imagem']['name'];
+    $tempName = $_FILES['imagem']['tmp_name'];
     $direccion = "img";
     $endImagem = $direccion."/".$nomeImagen;
 
 
-    $produtos[] = ["nome" => $nome,
+    $produtos[] = ["id"=>$idProduto, 
+                    "nome" => $nome,
                     "categoria" => $categoria,
                     "descricao" => $descricao,
                     "quantidade" => $quantidade,
@@ -64,9 +45,12 @@ $nomeArquivo = "produto.json";
 
 
     if ($_POST) {
-        echo cadastrarProduto($_POST["nome"],$_POST["categoria"],$_POST["descricao"],$_POST["quantidade"],$_POST['preco'],$_FILES['imagem'],);
+        echo cadastrarProduto($_POST['nome'],$_POST['categoria'],$_POST['descricao'],$_POST['quantidade'],$_POST['preco'],$endImagem,);
     }
 
+
+    //* Transformando produto cadastrado em array *//
+$produtoCadastrado = json_decode(file_get_contents($nomeArquivo), true);
 
 ?>
 
@@ -93,11 +77,11 @@ $nomeArquivo = "produto.json";
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach($produtos as $produto) {?>
+                    <?php foreach($produtoCadastrado as $produto) {?>
                     <tr>
-                        <td><?php echo $produto["nome"];?> </td>
+                        <td><strong><a href="sucesso.php?id= <?php echo $produto['id']; ?>"><?php echo $produto["nome"];?></a></strong></td>
                         <td><?php echo $produto["categoria"];?> </td>
-                        <td><?php echo $produto["precio"];?> </td>
+                        <td><?php echo $produto["preco"];?> </td>
                     </tr>
                     <?php }?>
                 </tbody>
@@ -107,7 +91,7 @@ $nomeArquivo = "produto.json";
         <!-- Comienza el formulario         -->
             <div class="col-4 bg-light p-4">
                 <h1>Cadastrar Produto</h1>
-            <form action="sucesso.php" method="post" enctype="multipart/form-data">
+            <form method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     Nome:<input type="text" class="form-control" name="nome" placeholder="Nome do Produto" required/>
                 </div>
@@ -116,7 +100,7 @@ $nomeArquivo = "produto.json";
                         <?php if(isset($categorias) && $categorias != []) {?>
                     <select class="form-control" id="exampleFormControlSelect1" name="categoria" required>
                             <?php foreach ($categorias as $categoria) {?>
-                                <option value="<?php $categoria?>"><?php echo $categoria?></option>
+                                <option value="<?php echo $categoria?>"><?php echo $categoria?></option>
                             <?php } ?>
                         <?php } ?>
                     </select>
@@ -126,10 +110,10 @@ $nomeArquivo = "produto.json";
                     <textarea class="form-control areatexto"  name="descricao" rows="3" required></textarea>
                 </div>
                 <div class="form-group">
-                    Quantidade:<input type="text" class="form-control" name="quantidade" placeholder="Quantidade" required/>
+                    Quantidade:<input type="number" class="form-control" name="quantidade" placeholder="Quantidade" required/>
                 </div>
                 <div class="form-group">
-                    Preço:<input type="text" class="form-control" name="preco" placeholder="Preço do Produto" required/>
+                    Preço:<input type="number" step="0.01" class="form-control" name="preco" placeholder="Preço do Produto" required/>
                 </div>
                 <div class="form-group">
                     Foto do produto:<br><input type="file" name="imagem" placeholder="Carregar Foto" required/>

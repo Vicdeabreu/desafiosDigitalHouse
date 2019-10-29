@@ -1,3 +1,7 @@
 .areatexto{
   resize: none;
 }
+
+.img-carrito img{
+  width: 30%;
+}
