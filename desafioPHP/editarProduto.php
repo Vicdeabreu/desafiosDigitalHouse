@@ -62,26 +62,26 @@ if(isset($_GET['id'])){
   exit;
   }
 
- if($_POST != []) {
-   $id = $_POST['id'];
-   $nomeED = $_POST['nome'];
-   $categoriaED = $_POST['categoria'];
-   $descricaoED = $_POST['descricao'];
-   $quantidadeED = $_POST['quantidade'];
-   $precoED = $_POST['preco'];
-   $imgED = $endImagem;
+//  if($_POST != []) {
+//    $id = $_POST['id'];
+//    $nomeED = $_POST['nome'];
+//    $categoriaED = $_POST['categoria'];
+//    $descricaoED = $_POST['descricao'];
+//    $quantidadeED = $_POST['quantidade'];
+//    $precoED = $_POST['preco'];
+//    $imgED = $endImagem;
 
-   $produtoEditado[] = ["id"=$id,
-                        "nomeEditado" = $nomeED,
-                        "categoriaEditada" = $categoriaED,
-                        "descricaoEditada" = $descricaoED,
-                        "quantidadeEditada" = $quantidadeED,
-                        "precoEditado" = $precoED,
-                        "imagemEditada" = $imgED,
-                         ]
-   $json = json_encode($produtoEditado);
-   $edicaoCerta = file_put_contents($nomeArquivo, $json);
- }
+//    $produtoEditado[] = ["id"=$id,
+//                         "nomeEditado" = $nomeED,
+//                         "categoriaEditada" = $categoriaED,
+//                         "descricaoEditada" = $descricaoED,
+//                         "quantidadeEditada" = $quantidadeED,
+//                         "precoEditado" = $precoED,
+//                         "imagemEditada" = $imgED,
+//                          ]
+//    $json = json_encode($produtoEditado);
+//    $edicaoCerta = file_put_contents($nomeArquivo, $json);
+//  }
 ?>
 
 <!DOCTYPE html>
