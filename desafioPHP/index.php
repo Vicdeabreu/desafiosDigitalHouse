@@ -45,7 +45,7 @@ $nomeArquivo = "produto.json";
 
 
     if ($_POST) {
-        echo cadastrarProduto($_POST['nome'],$_POST['categoria'],$_POST['descricao'],$_POST['quantidade'],$_POST['preco'],$endImagem,);
+        echo cadastrarProduto($_POST['nome'],$_POST['categoria'],$_POST['descricao'],$_POST['quantidade'],$_POST['preco'],$endImagem);
     }
 
 
@@ -79,7 +79,7 @@ $produtoCadastrado = json_decode(file_get_contents($nomeArquivo), true);
                 <tbody>
                     <?php foreach($produtoCadastrado as $produto) {?>
                     <tr>
-                        <td><strong><a href="sucesso.php?id= <?php echo $produto['id']; ?>"><?php echo $produto["nome"];?></a></strong></td>
+                        <td><strong><a href="individual.php?id= <?php echo $produto['id']; ?>"><?php echo $produto["nome"];?></a></strong></td>
                         <td><?php echo $produto["categoria"];?> </td>
                         <td><?php echo $produto["preco"];?> </td>
                     </tr>

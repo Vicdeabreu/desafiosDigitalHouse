@@ -50,6 +50,18 @@ $nomeArquivo = "produto.json";
 
 $dadosProduto = json_decode(file_get_contents($nomeArquivo), true);
 
+if(isset($_GET['id'])){
+    $id = $_GET['id'];
+    } elseif (isset($_POST['id'])) {
+    $id = $_POST['id'];
+    }else {
+    echo "Voce deve passar um id!";
+    exit;
+    }
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -64,7 +76,7 @@ $dadosProduto = json_decode(file_get_contents($nomeArquivo), true);
 <body>
     <main>
         <section class="container bg-light p-5">
-             <a href="desafioPHP.php"><button>&#8592 Voltar para lista de produtos</button></a>
+             <a href="index.php"><button>&#8592 Voltar para lista de produtos</button></a>
                 <div class="row">
                 <?php if(isset($dadosProduto) && $dadosProduto !=[]) { ?>
                     <?php foreach($dadosProduto as $produto) { 
@@ -87,7 +99,11 @@ $dadosProduto = json_decode(file_get_contents($nomeArquivo), true);
                         <p class="lead"><?php echo $produto['preco']?></p>   
                         </div>
                     </div>
-                </div>
+                    <div class="text-right">
+                        <button class="btn btn-primary" type="submit">Editar</button>
+                        <button class="btn btn-danger" type="button">Excluir</button>
+                    </div>  
+                </div>s
                 <?php  } ?>
                     <?php } ?>
                     </div>
