@@ -50,17 +50,6 @@ $nomeArquivo = "produto.json";
 
 $dadosProduto = json_decode(file_get_contents($nomeArquivo), true);
 
-if(isset($_GET['id'])){
-    $id = $_GET['id'];
-    } elseif (isset($_POST['id'])) {
-    $id = $_POST['id'];
-    }else {
-    echo "Voce deve passar um id!";
-    exit;
-    }
-
-
-
 
 ?>
 
@@ -100,10 +89,10 @@ if(isset($_GET['id'])){
                         </div>
                     </div>
                     <div class="text-right">
-                        <button class="btn btn-primary" type="submit">Editar</button>
+                        <a href="editarProduto.php?id=<?php echo $produto['id']; ?>"><button class="btn btn-primary" type="submit">Editar</button></a>
                         <button class="btn btn-danger" type="button">Excluir</button>
                     </div>  
-                </div>s
+                </div>
                 <?php  } ?>
                     <?php } ?>
                     </div>
