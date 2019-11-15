@@ -85,7 +85,7 @@ if(isset($_GET['id'])){
 //     $produtoEditado = array_splice($produtoCadastrado, 'nome', 1, array("nomeEditado", "categoriaEditada", "descricaoEditada", "quantidadeEditada", "precoEditado"))
 //     $json = json_encode($produtoEditado);
 //     $edicaoCerta = file_get_contents($nomeArquivo, $json); 
-// }
+// }   
 
 // Varios intentos por modificar os items do json, convertindo eles em array, modifica-los e depois convertirlos de novo em json, mas imposível. Gostaría de aprender cómo é que se faz.
 ?>
