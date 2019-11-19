@@ -3,6 +3,7 @@
     $posts = $_REQUEST['posts'];
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,16 +16,17 @@
 </head>
 <body>
     
-    <?php include "views/includes/header.php"; ?>
+    <?php include "includes/header.php"; ?>
     <main class="board">
+        <?php foreach ($posts as $post): ?>
         <div class="card mt-5">
-            <img id="cardimg" src="" alt="Card image cap">
+            <img id="cardimg" src="<?php echo $post->img; ?>" alt="Card image cap">
             <div class="card-body">
-                <p class="card-text">
-                </p>
+                <p class="card-text"><?php echo $post->descricao; ?></p>
             </div>
         </div>
-        <a class="float-button" href="">&#10010;</a>
+        <?php endforeach; ?>
+        <a class="float-button" href="formulario-post">&#10010;</a>
     </main>
    
     
