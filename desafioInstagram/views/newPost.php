@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="views/css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     
-    <?php include "views/includes/header.php"; ?>
-    <main class="board">
+    <?php include "includes/header.php"; ?>
+    <main class="board mt-5">
         <h1> Cadastro de novo Post </h1>
         <form action="/fake-instagram-POO/cadastrar-post" method="POST" enctype="multipart/form-data">
             <div class="form-group">

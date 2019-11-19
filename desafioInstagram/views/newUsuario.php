@@ -6,26 +6,31 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="views/css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     
-    <?php include "views/includes/header.php"; ?>
-    <main class="board">
+    <?php include "includes/header.php"; ?>
+
+    <main class="board mt-5">
         <h1> Cadastro de novo Usuario </h1>
-        <form action="/desafioInstagram/cadastrar-post" method="POST" enctype="multipart/form-data">
-        <div class="form-group">
-            <label for="descricao">Nome</label>
-            <input type="text" class="form-control" id="descricao" name="nome" placeholder="Insira um nome">
-        </div>
-        <div class="form-group">
-            <label for="descricao">Usuario</label>
-            <input type="text" class="form-control" id="descricao" name="usuario" placeholder="Insira um nome de usuario">
-        </div>
-        <div class="form-group">
-          <label for="exampleFormControlFile1">Example file input</label>
-          <input type="file" class="form-control-file" name="imgUsuario" id="exampleFormControlFile1">
-        </div>
+        <form action="/fake-instagram-POO/cadastrar-post" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="descricao">Nome:</label>
+                <input type="text" class="form-control" id="descricao" name="nome" placeholder="Insira um nome">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlFile1">Example file input</label>
+                <input type="file" class="form-control-file" name="img" id="exampleFormControlFile1">
+            </div>
+            <div class="form-group">
+                <label for="descricao">Nome Usuario:</label>
+                <input type="text" class="form-control" id="descricao" name="nome" placeholder="Insira um nome do Usuario">
+            </div>
+            <div class="form-group">
+                <label for="descricao">Senha</label>
+                <input type="text" class="form-control" id="descricao" name="senha" placeholder="Insira uma senha">
+            </div>
             <button type="submit" class="btn btn-success">Postar</button>
         </form>
 
