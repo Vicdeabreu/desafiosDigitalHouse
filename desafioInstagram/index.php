@@ -3,6 +3,9 @@
   $rotas = key($_GET)?key($_GET):"posts";
 
   switch($rotas){
+    case "login":
+      include "controllers/LoginController.php";
+    break;
     case "cadastrar-usuario":
       include "controllers/UsuarioController.php";
       $controller = new UsuarioController();
