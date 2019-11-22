@@ -5,6 +5,8 @@
   switch($rotas){
     case "login":
       include "controllers/LoginController.php";
+      $controller = new LoginController();
+      $controller->acao($rotas);
     break;
     case "cadastrar-usuario":
       include "controllers/UsuarioController.php";

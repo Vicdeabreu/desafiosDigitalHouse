@@ -12,10 +12,10 @@
   <main class="container">
     <div class="row mt-5 justify-content-center">
       <div class="col-5">
-        <img src="img/instagram-cel.jpg" alt="fake-instagram-victor" width="100%">
+        <img src="views/img/instagram-cel.jpg" alt="fake-instagram-victor" width="100%">
       </div>
       <div class="col-5">
-        <img src="img/fakegram.jpg" width="100%" alt="fakegram-logo">
+        <img src="views/img/fakegram.jpg" width="100%" alt="fakegram-logo">
         <form action="" method="post" enctype="multipart/form-data">
           <div class="form-group">
             <label for="nomeusuario">Nome do Usuario</label>
@@ -29,7 +29,7 @@
             <button class="btn btn-primary">Iniciar Sessão</button>
           </div>
           <h4></h4>
-          <p>Você não tem conta? <a href="cadastrar-usuario">Cadastre-se</p></a>
+          <p>Você não tem conta? <a href="formulario">Cadastre-se</p></a>
           <div class="d-flex justify-content-center mt-3">
             <p>Ainda não tem <strong>Fakegram</strong> no seu celular?</p>
           </div>
