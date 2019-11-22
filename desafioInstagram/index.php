@@ -1,6 +1,6 @@
 <?php
   
-  $rotas = key($_GET)?key($_GET):"posts";
+  $rotas = key($_GET)?key($_GET):"login";
 
   switch($rotas){
     case "login":

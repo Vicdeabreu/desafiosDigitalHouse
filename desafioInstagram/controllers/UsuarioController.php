@@ -21,7 +21,7 @@
       $linkTemp = $_FILES['img']['tmp_name'];
       $caminhoSalvar = "/img/$nomeArquivo";
       move_uploaded_file($linkTemp, $caminhoSalvar);
-      $senha = $_POST['senha'];
+      $senha = password_hash($_POST['senha'], PASSWORD_BCRYPT);
 
       $usuario = new Usuario();
       $resultado = $usuario->cadastrarUsuario($nome,$nomeUsuario,$caminhoSalvar,$senha);
