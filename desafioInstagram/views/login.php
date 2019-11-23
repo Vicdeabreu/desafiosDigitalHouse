@@ -16,14 +16,14 @@
       </div>
       <div class="col-5">
         <img src="views/img/fakegram.jpg" width="100%" alt="fakegram-logo">
-        <form action="" method="post" enctype="multipart/form-data">
+        <form action="logar" method="post" enctype="multipart/form-data">
           <div class="form-group">
             <label for="nomeusuario">Nome do Usuario</label>
               <input type="text" class="form-control" id="nomeusuario" name="username" placeholder="Ensira o nome do seu usuario">
           </div>
           <div class="form-group">
             <label for="">Senha</label>
-            <input type="text" class="form-control" id="senha" name="senha" placeholder="Ensira sua senha">
+            <input type="password" class="form-control" id="senha" name="senha" placeholder="Ensira sua senha">
           </div>
           <div class="d-flex justify-content-center">
             <button class="btn btn-primary">Iniciar Sessão</button>
