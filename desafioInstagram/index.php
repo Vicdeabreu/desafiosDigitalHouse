@@ -8,6 +8,11 @@
       $controller = new LoginController();
       $controller->acao($rotas);
     break;
+    case "logar":
+      include "controllers/LoginController.php";
+      $controller = new LoginController();
+      $controller->acao($rotas);
+    break;
     case "cadastrar-usuario":
       include "controllers/UsuarioController.php";
       $controller = new UsuarioController();

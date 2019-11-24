@@ -24,6 +24,10 @@
             <div class="card-body">
                 <p class="card-text"><?php echo $post->descricao; ?></p>
             </div>
+            <div class="row d-flex justify-content-start ml-3 mb-3"> 
+                <img src="views/img/corazon-like.png" width="8%" alt="">
+                <p>Likes</p>
+            </div>
         </div>
         <?php endforeach; ?>
         <a class="float-button" href="formulario-post">&#10010;</a>
