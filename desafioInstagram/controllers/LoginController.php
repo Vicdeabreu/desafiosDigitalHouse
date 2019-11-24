@@ -26,7 +26,7 @@
         if(password_verify($senha, mysqli_query($query))){
           session_start();
           $_SESSION['logado'] = TRUE;
-          header("Location:posts");
+          header("Location:/desafioInstagram/posts");
         } else {
           echo "Usuario ou senha inválidos";
         }
@@ -35,6 +35,23 @@
     }
   }
 
+
+  // private function checkUser() {
+  //   session_start();
+  //   $login = new User;
+  //   $users = $login->listUsers();
+  //   $_REQUEST['users'] = $users;
+  //   foreach ($users as $user) {
+  //       if ($_POST['username'] == $user['username'] && password_verify($_POST['userpassword'],$user['userpassword'])) {
+  //           $_SESSION['username'] = $user['username'];
+  //           header('Location:/DH_fakeInstagram/posts');
+  //       break;
+  //       } else {
+  //           $_SESSION['loginError'] = "Usuário ou senha incorretos";  
+  //           header('Location:/DH_fakeInstagram/login');
+  //           break;
+  //       }
+  //   }
 
      // if($resultado = $mysqli->query($query)) {
     //   while($row = $resultado->fetch_array) {
