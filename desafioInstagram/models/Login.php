@@ -2,12 +2,18 @@
   include_once "Conexao.php";
 
   class Login extends Conexao{
-    public function loginUsuario(){
-      parent::criarConexao();
-      $query = $db->prepare("SELECT * FROM usuarios WHERE 'nomeusuario' == '$usuario' AND 'senha' == '$senha'");
+    public function loginUsuario($nomeUsuario){
+      $db=parent::criarConexao();
+      $query = $db->prepare("SELECT * FROM usuarios WHERE nomeUsuario = ?");
+      $query->execute([$nomeUsuario]);
       $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
-      return $resultado;
+      if(count($resultado) > 0){
+        return $resultado[0];
+      }else{
+        return false;
+      }
     }
+
   }
   
 

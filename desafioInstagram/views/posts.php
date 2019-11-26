@@ -1,7 +1,7 @@
 <?php 
 
     $posts = $_REQUEST['posts'];
-
+    session_start();
 ?>
 
 <!DOCTYPE html>

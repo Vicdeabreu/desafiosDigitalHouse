@@ -19,21 +19,39 @@
     }
 
     private function logarUsuario(){
-      if($_POST){
-        $usuario = $_POST['nomeusuario'];
-        $senha = md5($_POST['senha']); // Armazenando os dados do POST dentro de uma variável
-      if($usuario == mysqli_query($query)){
-        if(password_verify($senha, mysqli_query($query))){
-          session_start();
-          $_SESSION['logado'] = TRUE;
-          header("Location:/desafioInstagram/posts");
-        } else {
-          echo "Usuario ou senha inválidos";
-        }
-      } echo "Usuario ou senha inválidos";
+      $nomeUsuario = $_POST['username'];
+      session_start();
+      $login = new Login();
+      $usuarios = $login->loginUsuario($nomeUsuario);
+  
+      if($usuarios != false){ 
+          if($_POST['username'] == $usuarios['nomeUsuario'] && password_verify($_POST['senha'], $usuarios['senha'])) {
+            $_SESSION['nomeusuario'] = $usuarios['nomeusuario'];
+            header('Location:posts');
+            exit;
+          } else {
+            $_SESSION['loginError'] = "Usuário ou senha inválidos";
+            header('Location:login');
+          }
+      }else{
+        $_SESSION['loginError'] = "Usuário ou senha inválidos";
+        header('Location:login');
       }
     }
-  }
+
+
+    //   if($usuario == mysqli_query($query)){
+    //     if(password_verify($senha, mysqli_query($query))){
+    //       session_start();
+    //       $_SESSION['logado'] = TRUE;
+    //       header("Location:/desafioInstagram/posts");
+    //     } else {
+    //       echo "Usuario ou senha inválidos";
+    //     }
+    //   } echo "Usuario ou senha inválidos";
+    //   }
+    // }
+  
 
 
   // private function checkUser() {
@@ -72,6 +90,6 @@
     //   else {
     //     Header("Location: login");
     //   }
-    // }
-
+    //  
+}
 ?>

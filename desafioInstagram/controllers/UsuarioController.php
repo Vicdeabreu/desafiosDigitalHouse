@@ -26,7 +26,7 @@
       $usuario = new Usuario();
       $resultado = $usuario->cadastrarUsuario($nome,$nomeUsuario,$caminhoSalvar,$senha);
       if($resultado){
-        header('Location:/desafioInstagram/posts');
+        header('Location:login');
       }else{
         echo "Não foi possível cadastrar o usuario";
       }

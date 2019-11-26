@@ -38,7 +38,11 @@
       $controller = new PostController();
       $controller->acao($rotas);
     break;
-
+    case "logout":
+      include "controllers/LogoutController.php";
+      $controller = new LogoutController();
+      $controller->acao($rotas);
+    break; 
   }
 
 

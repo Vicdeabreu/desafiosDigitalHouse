@@ -1,3 +1,9 @@
+<?php 
+
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +21,9 @@
         <img src="views/img/instagram-cel.jpg" alt="fake-instagram-victor" width="100%">
       </div>
       <div class="col-5">
+        <h4><?php if(array_key_exists('loginError', $_SESSION)){
+          echo "Usuário ou senha inválidos";
+        } ?></h4>
         <img src="views/img/fakegram.jpg" width="100%" alt="fakegram-logo">
         <form action="logar" method="post" enctype="multipart/form-data">
           <div class="form-group">
