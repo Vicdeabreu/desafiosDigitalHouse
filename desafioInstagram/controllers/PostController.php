@@ -1,5 +1,6 @@
 <?php 
 
+  session_start();
   include_once "models/Post.php";
 
   class PostController{
@@ -13,6 +14,9 @@
         break;
         case "cadastrar-post":
           $this->cadastroPost();
+        break;
+        case "like":
+          $this->likePost();
         break;
     }
   }
@@ -33,7 +37,7 @@
   }
 
   private function cadastroPost(){
-    $idTemp= 1;
+    $id= $_SESSION['id'];
     $descricao = $_POST['descricao'];
     $nomeArquivo = $_FILES['img']['name'];
     $linkTemp = $_FILES['img']['tmp_name'];
@@ -41,7 +45,7 @@
     $likes = 0;
     move_uploaded_file($linkTemp, $caminhoSalvar);
     $post = new Post();
-    $resultado = $post->cadastrarPost($idTemp,$caminhoSalvar,$descricao,$likes);
+    $resultado = $post->cadastrarPost($id,$caminhoSalvar,$descricao,$likes);
     if ($resultado){
       header('Location:/desafios/desafioInstagram/posts');
     }else{
@@ -49,12 +53,11 @@
     }
   }
 
-
+  private function likePost(){
+    
 
   }
 
-
-
-
+  }
 
 ?>

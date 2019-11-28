@@ -38,6 +38,11 @@
       $controller = new PostController();
       $controller->acao($rotas);
     break;
+    case "like":
+      include "controllers/PostController.php";
+      $controller = new PostController();
+      $controller->acao($rotas);
+    break;
     case "logout":
       include "controllers/LogoutController.php";
       $controller = new LogoutController();

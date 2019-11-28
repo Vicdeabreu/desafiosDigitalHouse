@@ -11,9 +11,15 @@
 
     public function listarPosts(){
       $db = parent::criarConexao();
-      $query = $db->query('SELECT * FROM posts ORDER BY id DESC'); 
+      $query = $db->query('SELECT posts.id, usuarios.nomeUsuario, usuarios.img as uimg, usuarios.nome, posts.img, posts.descricao, posts.likes FROM posts INNER JOIN usuarios ON posts.usuarios_id=usuarios.id ORDER BY id DESC');
       $resultado = $query->fetchAll(PDO::FETCH_OBJ);
       return $resultado;
+    }
+
+    public function likePost(){
+      $db = parent::criarConexao();
+      $query = $db->prepare("INSERT INTO posts()");
+      return $query->execute([$like]);
     }
 
   }

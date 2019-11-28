@@ -2,6 +2,10 @@
 
 session_start();
 
+if(isset($_SESSION['usuario'])){
+  header('Location:/desafioInstagram/posts');
+}
+
 ?>
 
 <!DOCTYPE html>

@@ -1,7 +1,7 @@
 <?php 
 
     $posts = $_REQUEST['posts'];
-    session_start();
+    
 ?>
 
 <!DOCTYPE html>
@@ -13,6 +13,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="views/css/styles.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 </head>
 <body>
     
@@ -20,14 +21,15 @@
     <main class="board">
         <?php foreach ($posts as $post): ?>
         <div class="card mt-5">
-            <img id="cardimg" src="<?php echo $post->img; ?>" alt="Card image cap">
-            <div class="card-body">
-                <p class="card-text"><?php echo $post->descricao; ?></p>
-            </div>
-            <div class="row d-flex justify-content-start ml-3 mb-3"> 
-                <img src="views/img/corazon-like.png" width="8%" alt="">
-                <p>Likes</p>
-            </div>
+        <div class="row">
+            <img style="border: 2px solid red;border-radius:25px" class="d.flex ml-4 mt-2" src="views<?php echo $post->uimg ?>" width="30" height="30" alt="">
+            <p class="d.flex ml-1 mt-2"><strong><?php echo $post->nomeUsuario ?></strong></p>
+        </div>
+        <img id="cardimg" src="<?php echo $post->img; ?>" alt="Card image cap">
+        <div class="card-body">
+            <a href=""><i class='far fa-heart' style='font-size:24px'></i></a>
+            <p class="card-text mt-2"><?php echo $post->descricao; ?></p>
+        </div>
         </div>
         <?php endforeach; ?>
         <a class="float-button" href="formulario-post">&#10010;</a>

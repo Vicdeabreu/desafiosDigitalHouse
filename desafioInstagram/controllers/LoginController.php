@@ -26,7 +26,10 @@
   
       if($usuarios != false){ 
           if($_POST['username'] == $usuarios['nomeUsuario'] && password_verify($_POST['senha'], $usuarios['senha'])) {
-            $_SESSION['nomeusuario'] = $usuarios['nomeusuario'];
+            $_SESSION['nomeUsuario'] = $usuarios['nomeUsuario'];
+            $_SESSION['nome'] = $usuarios['nome'];
+            $_SESSION['img'] = $usuarios['img'];
+            $_SESSION['id'] = $usuarios['id'];
             header('Location:posts');
             exit;
           } else {
@@ -39,6 +42,9 @@
       }
     }
 
+
+
+    // Intentos falhidos de Login //
 
     //   if($usuario == mysqli_query($query)){
     //     if(password_verify($senha, mysqli_query($query))){
