@@ -1,6 +1,8 @@
 <?php 
 
     $posts = $_REQUEST['posts'];
+
+    // Receve tudos os posts que tem no GET e no POST
     
 ?>
 
@@ -31,7 +33,7 @@
             <p class="card-text mt-2"><?php echo $post->descricao; ?></p>
         </div>
         </div>
-        <?php endforeach; ?>
+        <?php endforeach; //Foreach para imprimir na tela tudos os posts ?>
         <a class="float-button" href="formulario-post">&#10010;</a>
     </main>
    

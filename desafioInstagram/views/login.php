@@ -6,6 +6,8 @@ if(isset($_SESSION['usuario'])){
   header('Location:/desafioInstagram/posts');
 }
 
+// Valida si existir uma sessão aberta e manda para a página posts
+
 ?>
 
 <!DOCTYPE html>
@@ -27,6 +29,7 @@ if(isset($_SESSION['usuario'])){
       <div class="col-5">
         <h4><?php if(array_key_exists('loginError', $_SESSION)){
           echo "Usuário ou senha inválidos";
+          //Valido si existe um menssagem de erro na sessão e imprime na tela
         } ?></h4>
         <img src="views/img/fakegram.jpg" width="100%" alt="fakegram-logo">
         <form action="logar" method="post" enctype="multipart/form-data">

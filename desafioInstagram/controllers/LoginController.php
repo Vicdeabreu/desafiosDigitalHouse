@@ -12,6 +12,7 @@
           $this->logarUsuario();
         break;
       }
+      //Criando as rotas para visualizar o formulário de login "login" e para executar o formulário do login
     }
 
     private function viewLogin(){
@@ -20,10 +21,10 @@
 
     private function logarUsuario(){
       $nomeUsuario = $_POST['username'];
-      session_start();
+      session_start(); //Abre a sessão na hora de ele logar
       $login = new Login();
       $usuarios = $login->loginUsuario($nomeUsuario);
-  
+      //Executa o método da class Login. Outra opção era que loginUsuario for um método do Usuário
       if($usuarios != false){ 
           if($_POST['username'] == $usuarios['nomeUsuario'] && password_verify($_POST['senha'], $usuarios['senha'])) {
             $_SESSION['nomeUsuario'] = $usuarios['nomeUsuario'];
@@ -40,6 +41,7 @@
         $_SESSION['loginError'] = "Usuário ou senha inválidos";
         header('Location:login');
       }
+      //Pregunto si o usuário que está tentando de logar não é falso, ou seja, si for verdadero. Si for, compara o username que manda no formulário com o que tem cadastrado no banco (vía variável $usuario). Logo executa a função password_verify para conferir si a senha que tiver mandando for igual no que a gente tem cadastrado no banco. Si ambos for certo, atribui as variáveis da sessão que vou abrir para imprimir na tela depois e redirecciono para o posts. Si não for, imprime na tela o messagem
     }
 
 

@@ -12,6 +12,7 @@
           $this->viewFormulario();
         break;
       }
+      // Rotas para visualizar o usuário "formulario" e para executar o formulario de cadastro do usuário "cadastrar-usuario"
     }
 
     private function cadastroUsuario(){
@@ -30,6 +31,7 @@
       }else{
         echo "Não foi possível cadastrar o usuario";
       }
+      //Função para cadastrar um usuário novo. Dados que passa o usuário pelo input, a senha vai encriptada e logo redirecciona em caso de dar certo
     }
 
     private function viewFormulario(){
